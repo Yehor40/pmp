@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BMI Calc</string>
+    <string name="heightLabel">Height</string>
+    <string name="weightLabel">Weight</string>
+    <string name="buttonName">Calculate</string>
+    <string name="invalidWeightMessage">Weight should be double</string>
+    <string name="invalidHeightMessage">Height should be double</string>
+</resources>
