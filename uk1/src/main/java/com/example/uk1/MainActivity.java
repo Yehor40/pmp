@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     Calculation calculation = new Calculation();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle instanceState) {
+        super.onCreate(instanceState);
         setContentView(R.layout.activity_main);
     }
 
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        double height = extractor.extractValue(heightInput);
-        double weight = extractor.extractValue(weightInput);
+        double height = extractor.retrievalValue(heightInput);
+        double weight = extractor.retrievalValue(weightInput);
 
         double bmi = calculation.calculateBMI(weight, height);
 
@@ -55,14 +55,14 @@ class Validation {
 }
 
 class Extractor {
-    public double extractValue(String value) {
+    public double retrievalValue(String value) {
         return Double.parseDouble(value);
     }
 }
 
 class Calculation {
     public double calculateBMI(double weight, double height) {
-        double heightInMeters = height / 100;
-        return weight / (heightInMeters * heightInMeters);
+        double meters = height / 100;
+        return weight / (meters * meters);
     }
 }
