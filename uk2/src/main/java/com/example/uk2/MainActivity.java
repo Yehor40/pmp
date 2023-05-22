@@ -14,8 +14,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle instanceState) {
+        super.onCreate(instanceState);
         setContentView(R.layout.activity_main);
     }
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             firstPrice = Double.parseDouble(firstPriceInput);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "First price not correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: The first price is not the correct format", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -47,43 +47,43 @@ public class MainActivity extends AppCompatActivity {
         try {
             firstWeight = Double.parseDouble(firstWeightInput);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "First weight not correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: The first weight is not the correct format", Toast.LENGTH_SHORT).show();
             return;
         }
         double secondPrice;
         try {
             secondPrice = Double.parseDouble(secondPriceInput);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Second price not correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: The second price is not the correct format", Toast.LENGTH_SHORT).show();
             return;
         }
         double secondWeight;
         try {
             secondWeight = Double.parseDouble(secondWeightInput);
         } catch (NumberFormatException e) {
-            Toast.makeText(this, "Second weight not correct", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, " Error: The second weight is not the correct format", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        double firstPriceForKg = firstPrice / firstWeight * 1000;
-        double secondPriceForKg = secondPrice / secondWeight * 1000;
+        double firstPricePerKilogram = firstPrice / firstWeight * 1000;
+        double secondPricePerKilogram = secondPrice / secondWeight * 1000;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        if (firstPriceForKg < secondPriceForKg) {
+        if (secondPricePerKilogram < secondPricePerKilogram) {
             firstTextView.setBackgroundColor(Color.GREEN);
             secondTextView.setBackgroundColor(Color.RED);
-            builder.setMessage("First is cheaper, costs " + String.format("%.2f", firstPriceForKg) + " per kg, Second costs: " + String.format("%.2f", secondPriceForKg) + " per kg");
+            builder.setMessage("First is cheaper, costs " + String.format("%.2f", firstPricePerKilogram) + " per kg, Second costs: " + String.format("%.2f", secondPricePerKilogram) + " per kg");
 
-        } else if (firstPriceForKg > secondPriceForKg) {
+        } else if (secondPricePerKilogram > secondPricePerKilogram) {
             firstTextView.setBackgroundColor(Color.RED);
             secondTextView.setBackgroundColor(Color.GREEN);
-            builder.setMessage("Second is cheaper, costs " + String.format("%.2f", secondPriceForKg) + " per kg, First costs: " + String.format("%.2f", firstPriceForKg) + " per kg");
+            builder.setMessage("Second is cheaper, costs " + String.format("%.2f", secondPricePerKilogram) + " per kg, First costs: " + String.format("%.2f", firstPricePerKilogram) + " per kg");
 
         } else {
             firstTextView.setBackgroundColor(Color.GREEN);
             secondTextView.setBackgroundColor(Color.GREEN);
-            builder.setMessage("Same price per kg: " + String.format("%.2f", firstPriceForKg));
+            builder.setMessage("Same price per kg: " + String.format("%.2f", firstPricePerKilogram));
         }
 
         builder.create().show();
