@@ -10,6 +10,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/myapplication" />
+            <option value="$PROJECT_DIR$/myapplication/myapplication" />
+            <option value="$PROJECT_DIR$/myapplication2" />
             <option value="$PROJECT_DIR$/uk1" />
             <option value="$PROJECT_DIR$/uk2" />
             <option value="$PROJECT_DIR$/uk3_cv4" />
