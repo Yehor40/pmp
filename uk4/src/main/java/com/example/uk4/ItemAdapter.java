@@ -12,45 +12,45 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> {
-    private List<Item> itemList;
+public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.CustomViewHolder> {
+    private List<Item> list;
 
     public ItemAdapter(List<Item> itemList) {
-        this.itemList = itemList;
+        this.list = list;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
-        return new MyViewHolder(itemView);
+    public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.list, parent, false);
+        return new CustomViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(itemList.get(position).getName());
-        holder.count.setText(String.valueOf(itemList.get(position).getCount()));
-        holder.price.setText(String.valueOf(itemList.get(position).getPrice()));
-        holder.done.setChecked(itemList.get(position).isDone());
+    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+        holder.name.setText(list.get(position).getName());
+        holder.count.setText(String.valueOf(list.get(position).getCount()));
+        holder.price.setText(String.valueOf(list.get(position).getPrice()));
+        holder.done.setChecked(list.get(position).isDone());
         holder.delete.setOnClickListener(v -> {
-            itemList.remove(position);
+            list.remove(position);
             notifyDataSetChanged();
         });
     }
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return list.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder {
+    class CustomViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView count;
         private CheckBox done;
         private TextView price;
         private Button delete;
 
-        public MyViewHolder(@NonNull View view) {
+        public CustomViewHolder(@NonNull View view) {
             super(view);
             name = view.findViewById(R.id.nameView);
             count = view.findViewById(R.id.countView);
